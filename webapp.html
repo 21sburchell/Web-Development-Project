@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+   <link rel="stylesheet" href="css/webapp.css">
+   <style>
+    body {
+    text-align: center;
+    font-family: 'comic sans';
+    background-color: #2f97d7;
+    color: rgb(83, 83, 83);
+    margin: 0;
+    padding: 20px;
+}
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: inline-block;
+}
+.navbar a:hover {
+    background-color: #575757;
+    color: white;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input[type="number"] {
+    width: 100px;
+    padding: 10px;
+    margin: 10px 0;
+}
+button {
+    padding: 10px 20px;
+    background-color: #1f81e9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+}
+   </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">Back to Resume</a>
+        <a href="#" onclick="restartGame()">Play Again</a>
+    </div>
+
+    <div class="container">
+        <h1>Guess the Number Game</h1>
+        <p>I am thinking of a number between 1 and 100. Can you guess what it is?</p>
+        <input type="number" id="guess" placeholder="Enter your guess" min="1" max="100">
+        <button onclick="makeGuess()">Guess</button>
+        <button onclick="showHint()">Hint</button>
+        <p class="message" id="message"></p>
+    </div>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function makeGuess() {
+            const userGuess = Number(document.getElementById('guess').value);
+            const messageElement = document.getElementById('message');
+            attempts++;
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                messageElement.textContent = "Please enter a valid number between 1 and 100.";
+                return;
+            }
+
+            if (userGuess === randomNumber) {
+                messageElement.innerHTML = `🎉 Congratulations! You guessed it in ${attempts} attempts.`;
+            } else {
+                let hint = userGuess < randomNumber ? "higher" : "lower";
+                messageElement.innerHTML = `Wrong guess! Try ${hint}.`;
+            }
+        }
+
+        function showHint() {
+            const messageElement = document.getElementById('message');
+            let hintMessage = "";
+
+            if (randomNumber % 2 === 0) {
+                hintMessage = "The number is even.";
+            } else {
+                hintMessage = "The number is odd.";
+            }
+
+            if (randomNumber % 3 === 0) {
+                hintMessage += " It is also divisible by 3.";
+            }
+
+            messageElement.textContent = `Hint: ${hintMessage}`;
+        }
+
+        function restartGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+            document.getElementById('guess').value = '';
+            document.getElementById('message').textContent = '';
+        }
+    </script>
+</body>
+</html>

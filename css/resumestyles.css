@@ -1,0 +1,47 @@
+.navbar{
+        position: fixed; /* Sticks the bar to the top */
+        top: 0; /* Aligns it at the very top */
+        width: 100%; /* Spans the entire width of the page */
+        background-color: rgba(239, 188, 121, 0.689);
+        padding: 10px 0; /* Adds some padding */
+        color: white; /* White text */
+        text-align: center; /* Center the text/link */
+        z-index: 1000; /* Ensures it stays above other content */
+}
+body{
+    margin: 0; /* Remove default margins */
+            font-family: Arial, sans-serif;
+            padding-bottom: 50px; /* Match this value to the height of the navbar */
+     background-color: wheat;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(113, 37, 37);
+    margin-top: 70px;
+
+}
+.footer{
+    position: fixed; /* Sticks the bar to the bottom of the screen */
+    bottom: 0; /* Aligns it at the very bottom */
+    width: 100%; /* Makes the bar span the full width */
+    background-color: #333333c1; /* Dark background color */
+    color: white; /* White text color */
+    text-align: center; /* Centers the text */
+    padding: 10px 0; /* Adds padding */
+    font-size: 14px; /* Adjusts text size */
+    z-index: 1000; /* Keeps it above other content */
+}
+img{
+    width: 450px;
+    height: auto;
+    border: white;
+    padding: 10px;
+}
+
+a:visited{
+    color: brown;
+}
+a:hover{
+    color: rgb(0, 0, 0);}
+.Resume{
+    font-family: 'comic sans';
+    font-size: larger;
+}
